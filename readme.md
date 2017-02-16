@@ -1,6 +1,6 @@
 # Angular CLI Alias
 
-A little helper utility to allow setting max_old_used_space on the node process that runs the angular cli.
+A little helper utility to allow setting max_old_space_size on the node process that runs the angular cli.
 
 ## Usage
 
@@ -9,7 +9,7 @@ A little helper utility to allow setting max_old_used_space on the node process 
 ```json
 {
     "config": {
-        "max_old_used_space": 3072
+        "max_old_space_size": 3072
     }
 }
 ```
