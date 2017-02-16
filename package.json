@@ -1,6 +1,6 @@
 {
   "name": "angular-cli-alias",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "description": "",
   "bin": {
     "setup-ng-alias": "./bin/setup-ng-alias"
