@@ -1,0 +1,23 @@
+{
+  "name": "angular-cli-alias",
+  "version": "1.0.4",
+  "description": "",
+  "bin": {
+    "setup-ng-alias": "./bin/setup-ng-alias"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaacplmann/angular-cli-alias.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isaacplmann/angular-cli-alias/issues"
+  },
+  "homepage": "https://github.com/isaacplmann/angular-cli-alias#readme"
+}

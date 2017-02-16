@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+'use strict';
+
+var fs = require('fs');
+
+// Create the ng-alias scripts in node_modules/.bin
+fs.writeFile('./node_modules/.bin/ng-alias.cmd',
+  `@IF EXIST "%~dp0\\node.exe" (
+  "%~dp0\\node.exe" --max_old_space_size=${process.env.npm_package_config_max_old_space_size || 1536} "%~dp0\\..\\@angular\\cli\\bin\\ng" %*
+) ELSE (
+  @SETLOCAL
+  @SET PATHEXT=%PATHEXT:;.JS;=;%
+  node --max_old_space_size=${process.env.npm_package_config_max_old_space_size || 1536} "%~dp0\\..\\@angular\\cli\\bin\\ng" %*
+)`, {
+    flag: 'w'
+  },
+  function(err) {
+    if (!err) {
+      console.log("ng-alias.cmd script created.");
+    }
+  });
+
+fs.writeFile('./node_modules/.bin/ng-alias',
+`#!/bin/sh
+basedir=$(dirname "$(echo "$0" | sed -e 's,\\\\,/,g')")
+
+case \`uname\` in
+    *CYGWIN*) basedir=\`cygpath -w "$basedir"\`;;
+esac
+
+if [ -x "$basedir/node" ]; then
+  "$basedir/node" --max_old_space_size=${process.env.npm_package_config_max_old_space_size || 1536} "$basedir/../@angular/cli/bin/ng" "$@"
+  ret=$?
+else 
+  node --max_old_space_size=${process.env.npm_package_config_max_old_space_size || 1536} "$basedir/../@angular/cli/bin/ng" "$@"
+  ret=$?
+fi
+exit $ret`, {
+    flag: 'w'
+  },
+  function(err) {
+    if (!err) {
+      console.log("ng-alias script created.");
+    }
+  });
